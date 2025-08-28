@@ -1,1 +1,52 @@
 
+
+In this experiment we created a basic html card in which the balance , deposit and withdraw options can be seen.
+
+while making the html of rthe card , we tried keeping the different components in the different div's and named them
+so that it becomes easier to add CSS on them.
+
+in total we created 4 div's , in first the outterarea which is to be kept of greyish colour and it contains all 
+other div's in it 
+
+further we created the inner area div which contiains all the card elements 
+
+then we created the div in which the balance is written 
+
+at last we created the buttons div which contains 2 buttons deposit and withdraw
+
+********************* NOW IN CSS FILE ********************
+
+at first we have given the styling to the complete body which means this properties will be applied to every 
+element that is present in the body tag 
+
+we added the background colour and display flex , justify content , align items to keep the content in the
+center of the page 
+
+further in  the innerarea we added the different css 
+
+in which bg is white and the border radius is used to keep the corners rounded and box shadow is used to add the shadow
+effect so that the card can be differentiated
+
+now we gace the css to the balance div to add the colour to it , size of the text and the margin 
+
+at last we added the css to the buttons div 
+
+where we gave the similar properties to both the button using (.buttons button) 
+ and then we used the same properties that we earlier used like border radius , width , padding and display
+
+now we need to just chnage the color of the buttoms ,  then we will used the button name to chnage the color like
+deposit will be of green color anjf withdraw will be of red color
+
+LEARNING OUTCOMES-:
+
+Learnt how to add the display property , use of flex 
+Learnt how to align items in the center of the page 
+Learnt how to use classnames while giving the css properties 
+Learnt how to add padding , margins ,height and width 
+Learnt how to deal with multiple Div's 
+
+
+
+
+
+
