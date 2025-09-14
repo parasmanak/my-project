@@ -1,532 +1,265 @@
-Step 1: Setup Project
+Library Management App -----Experiment-8
 
-Open terminal and create a new React app:
+A small React app that demonstrates a Library Management UI with Search, Add, and Remove book functionality.
+This README contains step-by-step instructions and complete code for each file so you can copy & paste directly.
+This project is a **React-based Library Management UI** that allows users to:
 
-npx create-react-app library-management
-cd library-management
-npm start
+- 🔍 **Search** books by title or author (real-time filtering)
+- ➕ **Add** new books to the list
+- ❌ **Remove** books from the list
 
+---
 
-Delete extra boilerplate code inside App.js and App.css.
+Project Structure
+src/
+index.js
+App.js
+App.css
+components/
+Header.js
+LibraryManagement.js
+SearchBar.js
+AddBookForm.js
+BookList.js
+BookCard.js
 
-🔹 Step 2: Create LibraryManagement.js
+---
 
-Inside src/components/ folder, create LibraryManagement.js.
-For now, just show a title.
+## 📍 Step 1: Setting up `App.js`
 
-import React from "react";
-
-const LibraryManagement = () => {
-  return (
-    <div>
-      <h2>Library Management</h2>
-    </div>
-  );
-};
-
-export default LibraryManagement;
-
-🔹 Step 3: Use it in App.js
-
-Update App.js like this:
-
-import React from "react";
-import LibraryManagement from "./components/LibraryManagement";
+```jsx
+// src/App.js
+import React, { useState } from "react";
+import "./App.css";
+import SearchBar from "./components/SearchBar";
+import BookForm from "./components/BookForm";
+import BookList from "./components/BookList";
 
 function App() {
-  return <LibraryManagement />;
+  const [books, setBooks] = useState([
+    { id: 1, title: "1984", author: "George Orwell" },
+    { id: 2, title: "The Great Gatsby", author: "F. Scott Fitzgerald" },
+    { id: 3, title: "To Kill a Mockingbird", author: "Harper Lee" },
+  ]);
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleAddBook = (title, author) => {
+    if (title.trim() && author.trim()) {
+      setBooks([...books, { id: Date.now(), title, author }]);
+    }
+  };
+
+  const handleRemoveBook = (id) => {
+    setBooks(books.filter((book) => book.id !== id));
+  };
+
+  const filteredBooks = books.filter(
+    (book) =>
+      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.author.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div className="app-container">
+      <h1>Library Management</h1>
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <BookForm onAddBook={handleAddBook} />
+      <BookList books={filteredBooks} onRemoveBook={handleRemoveBook} />
+    </div>
+  );
 }
 
 export default App;
+Explanation:
 
+Manages the state for books and search term.
 
-👉 Now if you run npm start, you should see Library Management on the screen.
+Provides functions to add and remove books.
 
-Would you like me to go ahead with Step 4 (adding book list display) next?
-
-You said:
-yes
-ChatGPT said:
-
-Great 🚀 Let’s move to Step 4: Display book list.
-
-🔹 Step 4: Add Book List (inside LibraryManagement.js)
-
-We’ll show a few books from state using React’s useState.
-
-Update your LibraryManagement.js like this:
-
-import React, { useState } from "react";
-
-const LibraryManagement = () => {
-  // initial books
-  const [books] = useState([
-    { title: "1984", author: "George Orwell" },
-    { title: "The Great Gatsby", author: "F. Scott Fitzgerald" },
-    { title: "To Kill a Mockingbird", author: "Harper Lee" },
-  ]);
-
-  return (
-    <div>
-      <h2>Library Management</h2>
-
-      {/* Book List */}
-      <div>
-        {books.map((book, index) => (
-          <div key={index}>
-            <strong>{book.title}</strong> by {book.author}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default LibraryManagement;
-
-
-👉 Now run your project. You should see something like:
-
-Library Management
-1984 by George Orwell
-The Great Gatsby by F. Scott Fitzgerald
-To Kill a Mockingbird by Harper Lee
-
-
-✅ Books are now displayed dynamically.
-
-Do you want me to guide you through Step 5: Adding a search box to filter books?
-
-You said:
-yes
-ChatGPT said:
-
-Perfect 👍 Let’s move to Step 5: Add a search box to filter books.
-
-🔹 Step 5: Add Search Box (inside LibraryManagement.js)
-
-We’ll use another state variable searchTerm and filter the books dynamically.
-
-Update your LibraryManagement.js:
-
-import React, { useState } from "react";
-
-const LibraryManagement = () => {
-  const [books] = useState([
-    { title: "1984", author: "George Orwell" },
-    { title: "The Great Gatsby", author: "F. Scott Fitzgerald" },
-    { title: "To Kill a Mockingbird", author: "Harper Lee" },
-  ]);
-
-  // search term state
-  const [searchTerm, setSearchTerm] = useState("");
-
-  // filter books based on search term
-  const filteredBooks = books.filter(
-    (book) =>
-      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.author.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  return (
-    <div>
-      <h2>Library Management</h2>
-
-      {/* Search box */}
-      <input
-        type="text"
-        placeholder="Search by title or author"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-
-      {/* Book List */}
-      <div>
-        {filteredBooks.map((book, index) => (
-          <div key={index}>
-            <strong>{book.title}</strong> by {book.author}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default LibraryManagement;
-
-
-👉 Now when you type in the input box:
-
-If you type 1984, only that book shows.
-
-If you type Harper, only To Kill a Mockingbird shows.
-
-✅ Search functionality works now.
-
-Would you like me to guide you through Step 6: Adding new books (via input form) next?
-
-You said:
-yes
-ChatGPT said:
-
-Awesome 🚀 Let’s move to Step 6: Add new books using an input form.
-
-We’ll add two input fields (title, author) and a button to add a new book.
-
-🔹 Step 6 Code (inside LibraryManagement.js)
-import React, { useState } from "react";
-
-const LibraryManagement = () => {
-  const [books, setBooks] = useState([
-    { title: "1984", author: "George Orwell" },
-    { title: "The Great Gatsby", author: "F. Scott Fitzgerald" },
-    { title: "To Kill a Mockingbird", author: "Harper Lee" },
-  ]);
-
-  const [searchTerm, setSearchTerm] = useState("");
-
-  // states for new book inputs
-  const [newTitle, setNewTitle] = useState("");
-  const [newAuthor, setNewAuthor] = useState("");
-
-  // function to add a new book
-  const addBook = () => {
-    if (newTitle && newAuthor) {
-      setBooks([...books, { title: newTitle, author: newAuthor }]);
-      setNewTitle("");  // clear input after adding
-      setNewAuthor("");
-    }
-  };
-
-  const filteredBooks = books.filter(
-    (book) =>
-      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.author.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  return (
-    <div>
-      <h2>Library Management</h2>
-
-      {/* Search box */}
-      <input
-        type="text"
-        placeholder="Search by title or author"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-
-      <br /><br />
-
-      {/* Add book form */}
-      <input
-        type="text"
-        placeholder="Enter book title"
-        value={newTitle}
-        onChange={(e) => setNewTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Enter book author"
-        value={newAuthor}
-        onChange={(e) => setNewAuthor(e.target.value)}
-      />
-      <button onClick={addBook}>Add Book</button>
-
-      <br /><br />
-
-      {/* Book List */}
-      <div>
-        {filteredBooks.map((book, index) => (
-          <div key={index}>
-            <strong>{book.title}</strong> by {book.author}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default LibraryManagement;
-
-
-👉 Now you can type a book title and author in the two input boxes → click Add Book → it will appear in the list instantly ✅
-
-Do you want me to go ahead with Step 7: Removing a book from the list?
-
-You said:
-yes
-ChatGPT said:
-
-Perfect John 👍
-Let’s move to Step 7: Removing a book from the list.
-
-We’ll add a Remove button beside each book.
-
-🔹 Step 7 Code (inside LibraryManagement.js)
-import React, { useState } from "react";
-
-const LibraryManagement = () => {
-  const [books, setBooks] = useState([
-    { title: "1984", author: "George Orwell" },
-    { title: "The Great Gatsby", author: "F. Scott Fitzgerald" },
-    { title: "To Kill a Mockingbird", author: "Harper Lee" },
-  ]);
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const [newTitle, setNewTitle] = useState("");
-  const [newAuthor, setNewAuthor] = useState("");
-
-  // Add new book
-  const addBook = () => {
-    if (newTitle && newAuthor) {
-      setBooks([...books, { title: newTitle, author: newAuthor }]);
-      setNewTitle("");
-      setNewAuthor("");
-    }
-  };
-
-  // Remove a book
-  const removeBook = (index) => {
-    const updatedBooks = books.filter((_, i) => i !== index);
-    setBooks(updatedBooks);
-  };
-
-  // Filtered books
-  const filteredBooks = books.filter(
-    (book) =>
-      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.author.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  return (
-    <div>
-      <h2>Library Management</h2>
-
-      {/* Search box */}
-      <input
-        type="text"
-        placeholder="Search by title or author"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-
-      <br /><br />
-
-      {/* Add book form */}
-      <input
-        type="text"
-        placeholder="Enter book title"
-        value={newTitle}
-        onChange={(e) => setNewTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Enter book author"
-        value={newAuthor}
-        onChange={(e) => setNewAuthor(e.target.value)}
-      />
-      <button onClick={addBook}>Add Book</button>
-
-      <br /><br />
-
-      {/* Book List */}
-      <div>
-        {filteredBooks.map((book, index) => (
-          <div key={index} style={{ marginBottom: "8px" }}>
-            <strong>{book.title}</strong> by {book.author}
-            <button
-              onClick={() => removeBook(index)}
-              style={{
-                marginLeft: "10px",
-                background: "red",
-                color: "white",
-                border: "none",
-                padding: "4px 8px",
-                cursor: "pointer",
-              }}
-            >
-              Remove
-            </button>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default LibraryManagement;
-
-
-✅ Now each book has a Remove button → when clicked, that book disappears from the list.
-
-👉 Do you want me to go to Step 8: Split into separate components (BookCard, BookList, LibraryManagement) so it’s more structured?
-
-You said:
-yes
-ChatGPT said:
-
-Perfect John 🙌
-Now we’ll do Step 8: Split the app into separate components for better structure.
-
-We’ll create three components:
-
-BookCard.js → one book with remove button.
-
-BookList.js → shows all books.
-
-LibraryManagement.js → main logic (search, add, remove).
-
-📂 File Structure
-src/
- ├── components/
- │     ├── BookCard.js
- │     ├── BookList.js
- │     └── LibraryManagement.js
- ├── App.js
-
-1️⃣ BookCard.js
+Dynamically filters books based on the search input.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+📍 Step 2: Creating SearchBar.js
+jsx
+Copy code
+// src/components/SearchBar.js
 import React from "react";
 
-const BookCard = ({ title, author, onRemove }) => {
+function SearchBar({ searchTerm, setSearchTerm }) {
   return (
-    <div style={{ marginBottom: "8px" }}>
-      <strong>{title}</strong> by {author}
-      <button
-        onClick={onRemove}
-        style={{
-          marginLeft: "10px",
-          background: "red",
-          color: "white",
-          border: "none",
-          padding: "4px 8px",
-          cursor: "pointer",
-        }}
-      >
-        Remove
-      </button>
-    </div>
+    <input
+      type="text"
+      placeholder="Search by title or author"
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      className="search-input"
+    />
   );
-};
+}
 
-export default BookCard;
+export default SearchBar;
+Explanation:
+A controlled component that updates the searchTerm state as the user types.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+📍 Step 3: Creating BookForm.js
+jsx
+Copy code
+// src/components/BookForm.js
+import React, { useState } from "react";
 
-2️⃣ BookList.js
+function BookForm({ onAddBook }) {
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onAddBook(title, author);
+    setTitle("");
+    setAuthor("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="book-form">
+      <input
+        type="text"
+        placeholder="New book title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="New book author"
+        value={author}
+        onChange={(e) => setAuthor(e.target.value)}
+      />
+      <button type="submit">Add Book</button>
+    </form>
+  );
+}
+
+export default BookForm;
+Explanation:
+Handles book addition with controlled inputs for title and author. Clears fields after submitting.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+📍 Step 4: Creating BookList.js
+jsx
+Copy code
+// src/components/BookList.js
 import React from "react";
-import BookCard from "./BookCard";
+import BookItem from "./BookItem";
 
-const BookList = ({ books, onRemove }) => {
+function BookList({ books, onRemoveBook }) {
   return (
-    <div>
-      {books.map((book, index) => (
-        <BookCard
-          key={index}
-          title={book.title}
-          author={book.author}
-          onRemove={() => onRemove(index)}
-        />
-      ))}
+    <div className="book-list">
+      {books.length > 0 ? (
+        books.map((book) => (
+          <BookItem key={book.id} book={book} onRemoveBook={onRemoveBook} />
+        ))
+      ) : (
+        <p>No books found.</p>
+      )}
     </div>
   );
-};
+}
 
 export default BookList;
+Explanation:
+Loops through books and renders BookItem for each. Displays a fallback message if no books match.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+📍 Step 5: Creating BookItem.js
+jsx
+Copy code
+// src/components/BookItem.js
+import React from "react";
 
-3️⃣ LibraryManagement.js
-import React, { useState } from "react";
-import BookList from "./BookList";
-
-const LibraryManagement = () => {
-  const [books, setBooks] = useState([
-    { title: "1984", author: "George Orwell" },
-    { title: "The Great Gatsby", author: "F. Scott Fitzgerald" },
-    { title: "To Kill a Mockingbird", author: "Harper Lee" },
-  ]);
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const [newTitle, setNewTitle] = useState("");
-  const [newAuthor, setNewAuthor] = useState("");
-
-  // Add new book
-  const addBook = () => {
-    if (newTitle && newAuthor) {
-      setBooks([...books, { title: newTitle, author: newAuthor }]);
-      setNewTitle("");
-      setNewAuthor("");
-    }
-  };
-
-  // Remove book
-  const removeBook = (index) => {
-    setBooks(books.filter((_, i) => i !== index));
-  };
-
-  // Filter books
-  const filteredBooks = books.filter(
-    (book) =>
-      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.author.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
+function BookItem({ book, onRemoveBook }) {
   return (
-    <div>
-      <h2>Library Management</h2>
-
-      {/* Search */}
-      <input
-        type="text"
-        placeholder="Search by title or author"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-
-      <br /><br />
-
-      {/* Add book */}
-      <input
-        type="text"
-        placeholder="Enter book title"
-        value={newTitle}
-        onChange={(e) => setNewTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Enter book author"
-        value={newAuthor}
-        onChange={(e) => setNewAuthor(e.target.value)}
-      />
-      <button onClick={addBook}>Add Book</button>
-
-      <br /><br />
-
-      {/* Book List */}
-      <BookList books={filteredBooks} onRemove={removeBook} />
+    <div className="book-item">
+      <span>
+        <strong>{book.title}</strong> by {book.author}
+      </span>
+      <button onClick={() => onRemoveBook(book.id)}>Remove</button>
     </div>
   );
-};
-
-export default LibraryManagement;
-
-4️⃣ App.js
-import React from "react";
-import LibraryManagement from "./components/LibraryManagement";
-
-function App() {
-  return <LibraryManagement />;
 }
 
-export default App;
+export default BookItem;
+Explanation:
+Displays a single book’s title & author with a button to remove it from the list.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+🎨 Step 6: Styling with App.css
+css
+Copy code
+/* src/App.css */
 
+.app-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #f9f9f9;
+}
 
-✅ Now your project is modular:
+h1 {
+  text-align: center;
+}
 
-BookCard → one book
+.search-input,
+.book-form input {
+  width: calc(100% - 12px);
+  padding: 8px;
+  margin-bottom: 10px;
+  display: block;
+}
 
-BookList → all books
+.book-form {
+  display: flex;
+  gap: 10px;
+}
 
-LibraryManagement → logic
+.book-form input {
+  flex: 1;
+}
 
-👉 Next step (Step 9): Do you want me to help you move all the inline styles into App.css so the code looks cleaner?
+.book-form button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
 
-You said:
-yes
+.book-item {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.book-item button {
+  background: #ff6b6b;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book-item button:hover {
+  background: #ff4c4c;
+}
+Explanation:
+Adds a clean and minimal UI design for the app, with hover effects and responsive layout.
+
+🎯 Learning Outcomes
+By completing this project, you will learn:
+✅ React State Management – using useState to manage dynamic data.
+✅ Props Drilling & Component Communication – passing data/functions between parent & child components.
+✅ Controlled Components – managing form inputs with React state.
+✅ Dynamic Rendering – filtering and displaying lists based on search queries.
+✅ Event Handling – handling onChange, onSubmit, and onClick events.
+✅ Separation of Concerns – structuring a React project with reusable components.
+✅ Basic Styling with CSS – styling React components using external stylesheets.
+
+```
