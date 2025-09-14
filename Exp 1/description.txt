@@ -1,0 +1,18 @@
+Student Registration Form using HTML
+Description:-
+
+This HTML code creates a Student Registration Form that asks the user to enter:
+1.Student Full name
+2.Email
+3.Age
+We have uses Input boxes for name, email, and age.A Submit button to send the form.
+Validation:
+1.In Full Name- Must enter only letters and spaces (no numbers or special characters)
+2.In Email-Must enter a valid email (with @ and domain)
+3.In age -Must enter a number between 1 and 120
+Learning Outcomes:
+1.Learned how to make a form in a webpage.
+2.Learned how to add input boxes (text, number, email).
+3. Learned how to add validations to form fields.
+4.Learned how to use placeholders to guide user input
+5. Learned how to connect CSS for better design.
