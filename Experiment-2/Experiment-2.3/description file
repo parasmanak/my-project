@@ -1,0 +1,31 @@
+Project Description: SVG Drawing Tool (HTML + CSS)
+
+1. HTML File (SVG Drawing Tool):
+---------------------------------
+- The HTML defines the structure of the drawing tool.
+- A <div class="container"> is used to hold the entire project content.
+- Inside it:
+  • A <h1> heading shows the title "SVG Drawing Tool".
+  • A <div class="canvas-container"> holds an <svg> element with width=800 and height=600, which works as the drawing canvas where shapes will be created dynamically using JavaScript (script.js).
+  • An <div class="info"> displays instructions for the user ("Click and drag to draw shapes").
+- The <script src="script.js"></script> is included for future functionality like drawing shapes.
+
+2. CSS File (style-6.css):
+--------------------------
+- Styles the overall look of the tool.
+- body:
+  • Uses Arial, sans-serif font for clean readability.
+  • Adds margin (20px) for spacing around the page.
+  • Sets background-color to light gray (#f0f0f0) for a soft appearance.
+- .container:
+  • Sets maximum width of 900px and centers it horizontally with margin: 0 auto.
+  • Aligns all text inside to the center.
+- Suggested Extensions:
+  • .canvas-container can be styled with border, padding, rounded corners, and box-shadow for a neat frame.
+  • The <svg> element can have a light background color and a crosshair cursor for better user experience.
+
+Purpose:
+---------
+This project provides a foundation for building an interactive SVG-based drawing tool. 
+The HTML sets up the structure, the CSS improves appearance, and JavaScript (in script.js) will later handle drawing functionality such as click-and-drag to create shapes.
+

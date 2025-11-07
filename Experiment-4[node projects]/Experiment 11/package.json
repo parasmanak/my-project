@@ -1,0 +1,16 @@
+{
+  "name": "experiment-11",
+  "version": "1.0.0",
+  "description": "Build a RESTful API using Express.js to manage a collection of playing cards.  \r This project demonstrates routing, handling HTTP methods, and basic data manipulation in a Node.js backend environment.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

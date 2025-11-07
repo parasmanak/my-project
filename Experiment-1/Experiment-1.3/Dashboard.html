@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <style>  
+    :root {
+      --bg-color: white;
+      --text-color: black;
+      --header-footer-bg: #4CAF50;
+      --sidebar-bg: #f2f2f2;
+    }
+
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #f2f2f2;
+      --header-footer-bg: #333;
+      --sidebar-bg: #2b2b2b;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+      grid-template-columns: 200px 1fr;
+      grid-template-rows: 60px 1fr 40px;
+      height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      grid-area: header;
+      background-color: var(--header-footer-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 15px;
+      color: white;
+    }
+
+    header h2 {
+      margin: 0;
+    }
+
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+    }
+
+    nav {
+      grid-area: sidebar;
+      background-color: var(--sidebar-bg);
+      padding: 20px;
+    }
+
+    nav a {
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: underline;
+      color: purple;
+    }
+
+    main {
+      grid-area: main;
+      padding: 20px;
+    }
+
+    footer {
+      grid-area: footer;
+      background-color: var(--header-footer-bg);
+      color: white;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        grid-template-areas:
+          "header"
+          "main"
+          "sidebar"
+          "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px 1fr auto 40px;
+      }
+    }
+    Input{
+      display:none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Admin Dashboard</h2>
+    <div class="theme-toggle">
+      <label for="themeSwitch">Dark Mode</label>
+      <input type="checkbox" id="themeSwitch" onclick="toggleTheme()" />
+    </div>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Users</a>
+    <a href="#">Settings</a>
+  </nav>
+
+  <main>
+    <h3>Welcome, Admin!</h3>
+    <p>This is the main content area. Add charts, tables, or reports here.</p>
+  </main>
+
+  <footer>
+    &copy; 2025 Admin Panel
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>
+
+
+

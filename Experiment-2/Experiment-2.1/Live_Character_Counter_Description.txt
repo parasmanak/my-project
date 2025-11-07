@@ -1,0 +1,59 @@
+
+Project Description – Live Character Counter
+
+Overview
+---------
+This project is a Live Character Counter built using HTML, CSS, and JavaScript.
+It allows users to type text inside an input box and instantly displays the number of characters typed.
+The layout is styled using CSS for a clean and centered interface.
+
+Technologies Used
+-----------------
+- HTML5 – for structure
+- CSS3 – for styling and layout
+- JavaScript (Vanilla JS) – for live character counting
+
+Files
+-----
+1. index.html – Main structure and JavaScript logic.
+2. style-4.css – Stylesheet for layout and design.
+
+index.html (HTML + JavaScript)
+------------------------------
+Purpose:
+- Provides the input field for typing text.
+- Displays the live character count.
+- Uses JavaScript to update character count dynamically.
+
+Key Features:
+- <input> field for text input.
+- <span> inside <h4> to display character count.
+- JavaScript addEventListener('input', …) triggers on every keystroke.
+- Updates character count in real-time using .value.length.
+
+style-4.css (CSS Styling)
+--------------------------
+Purpose:
+- Centers content vertically and horizontally.
+- Provides spacing and clean font.
+- Makes the input box user-friendly and neat.
+
+Key Features:
+- display: flex; justify-content: center; align-items: center; → centers everything.
+- min-height: 100vh; → fills the whole screen height.
+- Input field styled with padding, font-size, and width.
+- Headings styled with margins for spacing.
+
+How It Works
+------------
+1. User starts typing in the input field.
+2. JavaScript captures the input using textInput.value.length.
+3. The character count is displayed instantly in the <span> element.
+4. CSS ensures the interface is clean, centered, and easy to use.
+
+Possible Enhancements
+---------------------
+- Add word counter alongside character counter.
+- Set a maximum character limit (e.g., 100/200 characters).
+- Add color change effect when limit is reached.
+- Show remaining characters instead of total typed.

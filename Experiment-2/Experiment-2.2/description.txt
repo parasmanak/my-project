@@ -1,0 +1,60 @@
+Project Description – Character Counter & Product Filter
+
+=======================================================
+
+1) Live Character Counter
+-------------------------
+Overview:
+This project is a simple Live Character Counter built using HTML, CSS, and JavaScript.
+It allows users to type text inside an input box and instantly displays the number of characters typed.
+
+Files:
+- index.html – Contains the input field, character counter display, and JavaScript logic.
+- style-4.css – Stylesheet to center content and style input/heading.
+
+How It Works:
+1. User types text into the input box.
+2. JavaScript captures input using textInput.value.length.
+3. The character count updates instantly in the span element.
+4. CSS centers content and makes it look clean.
+
+Key Features:
+- Real-time character count updates.
+- Clean, centered layout with simple styling.
+- Easy to expand (e.g., adding word count or character limit).
+
+Possible Enhancements:
+- Add word counter.
+- Set maximum character limit (e.g., 100/200 characters).
+- Show remaining characters instead of total typed.
+
+
+2) Product Filter by Category
+-----------------------------
+Overview:
+This project is a Product List with filtering functionality using HTML, CSS, and JavaScript.
+It allows users to filter products by category (Clothing, Electronics, Books, or All).
+
+Files:  
+- index.html – Contains dropdown menu for categories and product list.
+- style-5.css – Stylesheet for product boxes and dropdown design.
+
+How It Works:
+1. Products are grouped into categories using CSS classes (e.g., clothing, electronics, books).
+2. A dropdown menu lets the user select a category.
+3. JavaScript listens for changes in the dropdown and shows/hides products based on the selected category.
+4. CSS styles the products with borders, padding, and spacing for readability.
+
+Key Features:
+- Dropdown-based product filtering.
+- Simple styling with borders and spacing.
+- Real-time updates without reloading the page.
+
+Possible Enhancements:
+- Add a search bar to filter by product name.
+- Allow multiple category selections with checkboxes.
+- Use animations (fade in/out) when filtering products.
+- Load products dynamically from a JavaScript array or API.
+
+=======================================================
+This single document describes both projects clearly, including their purpose, structure, working, and possible improvements.

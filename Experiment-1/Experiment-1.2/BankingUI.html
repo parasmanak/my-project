@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Banking UI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to right, #dbeafe, #f0f9ff);
+    }
+
+    .bank-ui {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .balance-box {
+      background-color: #f1f5f9;
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1e3a8a;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .buttons button {
+      flex: 1 1 45%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      cursor: default;
+      transition: background 0.3s ease;
+    }
+
+    .deposit {
+      background-color: #14b44f;
+    }
+
+    .withdraw {
+      background-color: #ef4444;
+    }
+
+    /* Responsive typography */
+    @media (max-width: 500px) {
+      .balance-box {
+        font-size: 1.2rem;
+      }
+
+      .buttons button {
+        font-size: 0.95rem;
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bank-ui">
+    <div class="balance-box">
+      Balance: 5,000
+    </div>
+    <div class="buttons">
+      <button class="deposit">Deposit</button>
+      <button class="withdraw">Withdraw</button>
+    </div>
+  </div>
+</body>
+</html>

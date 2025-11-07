@@ -1,0 +1,47 @@
+STUDENT REGISTRATION FORM TEST CASES & VALIDATIONS
+
+1. FIELD: Name
+Requirement: Required means the field can't be empty
+Only Uppercase and Lowercase alphabets and spaces allowed (pattern = [A-Za-z\s]+)
++ means one or more than one
+VALID INPUTS:
+    "John Doe"
+    "Alice Smith"
+INVALID INPUTS:
+    "anu123" - Contains numbers should trigger pattern mismatch
+    "anu_bindal" - Contains underscore that is invalid character
+    "ANU@bindal" - Contains special character
+
+2. FIELD: Email
+Requirement: Required means the field can't be empty
+Must follow standard email format that is example@domain.com/in
+VALID INPUTS:
+    "anu123@gmail.com"
+    "user.name@example.co.in"
+INVALID INPUTS:
+    "anu123" - Missing @ and domain
+    "anu@.com" - Missing domain name
+    "anu@domain,com" - Comma instead of dot
+
+3. FIELD: Age
+Requirement: Required means the field can't be empty,
+Numeric means that it can only take numbers as inputs,
+Minimum age should not be less than 5 and not greater than 100
+VALID INPUTS:
+    5 - Minimum valid
+    20, 65 - Typical valid ages
+    100 - Maximum valid
+INVALID INPUTS:
+    "" (empty) - Should trigger required error
+    4 - Below min will be invalid
+    101 - Above max will be invalid
+    "abc" - Non-numeric will be invalid
+
+4. FORM SUBMISSION:
+Submit with all valid fields will be Success
+Submit with 1+ invalid fields, form should not submit, browser displays validation messages
+
+LEARNING OUTCOMES:
+1. Learnt how to create a basic HTML student registration form
+2. Applied HTML5 validations (required, email, min, max)
+3. Understood input types and form behavior with incorrect data

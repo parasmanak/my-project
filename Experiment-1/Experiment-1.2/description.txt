@@ -1,0 +1,70 @@
+RESPONSIVE BANKING UI STRUCTURE & STYLING DESCRIPTION
+
+1. SECTION: Container (.bank-ui)
+Requirement: Central card layout to display balance and actions
+Elements Inside:
+- Balance Display Box
+- Deposit and Withdraw Buttons
+
+CSS Properties & Effects:
+- background-color: white; → Clean, minimalistic background for the card
+- padding: 2rem; → Adequate internal spacing
+- border-radius: 20px; → Smooth rounded corners for modern feel
+- box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); → Soft drop shadow creates elevation
+- width: 90%; max-width: 400px; → Responsive width to fit all screens
+- text-align: center; → Centered text alignment
+
+2. SECTION: Balance Display (.balance-box)
+Requirement: Visually emphasize account balance
+CSS Properties & Effects:
+- background-color: #f1f5f9; → Light gray background for soft contrast
+- padding: 1.5rem; → Adds visual breathing space
+- border-radius: 15px; → Matches rounded theme
+- font-size: 1.5rem; → Makes balance prominent
+- font-weight: bold; → Highlights the value
+- color: #1e3a8a; → Deep blue for strong visibility
+
+3. SECTION: Button Group (.buttons)
+Requirement: Action area for user to interact (deposit/withdraw)
+Elements Inside:
+- Two buttons with different styles (Deposit, Withdraw)
+
+CSS Properties & Effects:
+- display: flex; gap: 1rem; → Horizontal layout with spacing
+- flex-wrap: wrap; justify-content: center; → Wraps on small screens
+- Each button:
+  - flex: 1 1 45%; → Responsive sizing
+  - padding: 0.75rem; border-radius: 10px; → Comfortable shape
+  - font-size: 1rem; font-weight: 600; → Readable, bold
+  - color: white; → Contrast with background
+  - cursor: default; → No interactivity for static demo
+  - transition: background 0.3s ease; → Smooth color change on hover (if enabled)
+
+Button Color Classes:
+- .deposit → background-color : green #14b44f; → Green for positive action/deposit
+- .withdraw → background-color : red #ef4444; → Red for deduction/to withdraw
+
+4. BODY STYLING
+Requirement: Center align the UI on screen with aesthetic background
+CSS Properties & Effects:
+- display: flex; justify-content: center; align-items: center; height: 100vh; → Perfect centering
+- background: linear-gradient(to right, #dbeafe, #f0f9ff); → Soft blue gradient gives a modern, fresh look
+
+5. UNIVERSAL SELECTOR (*)
+Purpose: Reset margins, paddings and ensure consistent box model
+CSS Properties:
+- margin: 0; padding: 0; box-sizing: border-box;
+- font-family: 'Segoe UI', sans-serif; → Modern clean font
+
+6. RESPONSIVE DESIGN (Media Query)
+Requirement: Improve readability and usability on smaller screens
+Applied at: max-width: 500px
+Changes:
+- .balance-box → font-size: 1.2rem; → Shrinks text size for fit
+- .buttons button → font-size: 0.95rem; flex: 1 1 100%; → Buttons stack vertically for better access
+
+LEARNING OUTCOMES:
+1. Learnt to build a responsive banking UI card using HTML & CSS
+2. Understood how to use flexbox for button arrangement
+3. Applied media queries to handle small screen layouts
+4. Gained experience in using modern UI aesthetics like gradients, shadows, and rounded corners
